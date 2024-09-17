@@ -832,7 +832,7 @@ pub fn ntile(
     add_builder_fns_to_window(window_fn, partition_by, order_by)
 }
 
-pub(crate) fn init_module(m: &Bound<'_, PyModule>) -> PyResult<()> {
+pub fn init_module(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_wrapped(wrap_pyfunction!(abs))?;
     m.add_wrapped(wrap_pyfunction!(acos))?;
     m.add_wrapped(wrap_pyfunction!(acosh))?;

@@ -15,8 +15,6 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::sync::Arc;
-
 use pyo3::{prelude::*, types::PyTuple};
 
 use datafusion::arrow::array::{make_array, Array, ArrayData, ArrayRef};
@@ -80,7 +78,7 @@ impl PyScalarUDF {
         let function = create_udf(
             name,
             input_types.0,
-            Arc::new(return_type.0),
+            return_type.0,
             parse_volatility(volatility)?,
             to_rust_function(func),
         );

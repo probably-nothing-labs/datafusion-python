@@ -45,7 +45,7 @@ pub mod errors;
 #[allow(clippy::borrow_deref_ref)]
 pub mod expr;
 #[allow(clippy::borrow_deref_ref)]
-mod functions;
+pub mod functions;
 pub mod physical_plan;
 mod pyarrow_filter_expression;
 mod record_batch;
@@ -73,7 +73,7 @@ pub(crate) struct TokioRuntime(tokio::runtime::Runtime);
 /// The higher-level public API is defined in pure python files under the
 /// datafusion directory.
 #[pymodule]
-fn _internal(py: Python, m: Bound<'_, PyModule>) -> PyResult<()> {
+pub fn _internal(py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
     // Register the Tokio Runtime as a module attribute so we can reuse it
     m.add(
         "runtime",
